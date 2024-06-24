@@ -3,6 +3,7 @@ import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
 import PageNotFound from "./pages/PageNotFound.tsx";
 import Applayout from "./UI/Applayout.tsx";
 import HomePage from "./pages/HomePage.tsx";
+import GlobalStyles from "./styles/GlobalStyles.ts";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,8 +30,6 @@ const router = createBrowserRouter([
 function App() {
   return (
       <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
-
         <GlobalStyles />
         <RouterProvider router={router} />
       </QueryClientProvider>
