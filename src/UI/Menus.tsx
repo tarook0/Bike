@@ -80,7 +80,7 @@ function Menus({ children }) {
 }
 function Toggle({ id }) {
   const { open, close, openId, setPositions } = useContext(MenusContext);
-  function handelClick(e) {
+  function handelClick(e: { target: { closest: (arg0: string) => { (): any; new(): any; getBoundingClientRect: { (): any; new(): any; }; }; }; }) {
     const rect = e.target.closest("button").getBoundingClientRect();
     setPositions({
       x: window.innerWidth - rect.width - rect.x,

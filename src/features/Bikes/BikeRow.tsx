@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import styled, { css } from "styled-components";
 import { format } from "date-fns";
 import Tag from "../../UI/Tag";

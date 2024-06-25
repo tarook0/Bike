@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef } from "react";
 
-export function UseOutSideClick(handler, listenCapturing = true ) {
+export function UseOutSideClick(handler: unknown, listenCapturing = true ) {
   const ref = useRef();
   useEffect(() => {
-    function handelClick(e) {
+    function handelClick(e: { target: any; }) {
       if (ref.current && !ref.current.contains(e.target)) {
         console.log("Click out side ");
         handler();

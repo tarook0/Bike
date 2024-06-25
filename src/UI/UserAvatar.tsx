@@ -10,7 +10,7 @@ const Avatar = styled.img`
   outline: 2px solid var(--color-grey-100);
 `;
 function UserAvatar() {
-  const {fullName} ="Tarek AlHabbal ";
+  const fullName ="Tarek AlHabbal ";
   return <Avatar src={"/Tarek.jpg"} alt={`Avatar of ${fullName}`}></Avatar>;
 }
 export default UserAvatar;

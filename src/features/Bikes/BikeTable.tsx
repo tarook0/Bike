@@ -8,6 +8,7 @@ import BikeRow from "./BikeRow";
 import { useBikes } from "./useBikes";
 import { useBikesCount } from "./useBikesCount";
 import { useSearchParams } from "react-router-dom";
+import { Bike } from "./Bike";
 
 function BikeTable() {
   const {  bikes, isLoading } = useBikes();
@@ -47,7 +48,7 @@ function BikeTable() {
 
         <Table.Body
           data={bikes}
-          render={(bike) => (
+          render={(bike:Bike) => (
             <BikeRow key={bike.id} bike={bike} />
           )}
         />

@@ -12,7 +12,7 @@ export async function getBikes({ filter, page ,search}) {
   const data  = await res.json();
   return { data: data.bikes,count:data?.bikes?.length };
 }
-export async function getBike(bikeId) {
+export async function getBike(bikeId: string | undefined) {
   const res = await fetch(
     `${API_URL}/bikes/${bikeId}` 
   );
