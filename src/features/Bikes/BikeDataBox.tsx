@@ -1,8 +1,7 @@
-import styled, { css } from "styled-components";
-import { format, isToday } from "date-fns";
-import { MdElectricBike } from "react-icons/md";
-
-import DataItem from "../../UI/DataItem";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import styled from "styled-components";
+import { format} from "date-fns";
 // import { Flag } from "../../UI/Flag";
 
 import { Bike } from "./Bike";
