@@ -2,8 +2,6 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { PAGE_SIZE } from "../utils/constants";
-import { useBikesCount } from "../features/Bikes/useBikesCount";
-
 const StyledPagination = styled.div`
   width: 100%;
   display: flex;

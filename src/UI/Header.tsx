@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Heading from "./Heading";
-import Row from "./Row";
+import UserAvatar from "./UserAvatar";
+import HeaderMenu from "./HeaderMenu";
 const StyledHeader = styled.header`
   background-color: var(--color-grey-0);
   padding: 1.2rem 4.8rem;
@@ -8,14 +8,13 @@ const StyledHeader = styled.header`
   display: flex;
   gap:2.4rem;
   align-items: center;
-  justify-content: center ;
+  justify-content: end ;
 `;
 function Header() {
   return (
     <StyledHeader>
-        <Row type="horizontal">
-        <Heading as="h1">All Bikes</Heading>
-      </Row>
+      <UserAvatar/>
+      <HeaderMenu/>
     </StyledHeader>
   );
 }

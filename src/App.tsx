@@ -5,6 +5,7 @@ import Applayout from "./UI/Applayout.tsx";
 import HomePage from "./pages/HomePage.tsx";
 import GlobalStyles from "./styles/GlobalStyles.ts";
 import ReportBikePage from "./pages/ReportBikePage.tsx";
+import { DarkModeProvider } from "./context/DarkModeContext.tsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,10 +32,13 @@ const router = createBrowserRouter([
 ]);
 function App() {
   return (
+    <DarkModeProvider>
+
       <QueryClientProvider client={queryClient}>
         <GlobalStyles />
         <RouterProvider router={router} />
       </QueryClientProvider>
+    </DarkModeProvider>
   );
 }
 
