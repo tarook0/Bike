@@ -1,3 +1,4 @@
+import BikeTableOperations from "../features/Bikes/BikeTableOperations";
 import Heading from "../UI/Heading";
 import Row from "../UI/Row";
 function HomePage() {
@@ -5,7 +6,7 @@ function HomePage() {
     <>
       <Row type="horizontal">
         <Heading as="h1">All Bikes</Heading>
-        {/* opperations  */}
+        <BikeTableOperations/>
       </Row>
       {/* Table */}
     </>
