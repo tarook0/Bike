@@ -8,7 +8,7 @@ import GlobalStyles from "./styles/GlobalStyles.ts";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 60 * 1000,
+      staleTime: 60 * 10000,
     },
   },
 });
