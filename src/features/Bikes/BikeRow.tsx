@@ -1,19 +1,14 @@
 import styled, { css } from "styled-components";
-import { format, isToday } from "date-fns";
-
+import { format } from "date-fns";
 import Tag from "../../UI/Tag";
 import Table from "../../UI/Table";
 import Modal from "../../UI/Modal";
-import ConfirmDelete from "../../UI/ConfirmDelete";
 import Menus from "../../UI/Menus";
 import {
-  HiArrowDownOnSquare,
-  HiArrowUpOnSquare,
   HiEye,
-  HiTrash,
 } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
-import { formatCurrency, formatDistanceFromNow, formatSerialNumber } from "../../utils/helpers";
+import {  formatSerialNumber } from "../../utils/helpers";
 
 const BikeTitle = styled.div`
   font-size: 1.6rem;
@@ -66,7 +61,7 @@ function BikeRow({
     description,
     frame_colors,
     frame_model,
-    id,
+    id:bikeId,
     is_stock_img,
     large_img,
     location_found,
@@ -117,46 +112,18 @@ function BikeRow({
   {(serial!=='Hidden'&&serial!=='Unknown')&& <Tag type={'indigo'}><Amount>{formatSerialNumber(serial)}</Amount></Tag>}
 
   <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
-{/* 
 
         <Menus.Menu>
-          <Menus.Toggle id={bookingId} />
-          <Menus.List id={bookingId}>
-            <Menus.Button
-              icon={<HiEye />}
-              onClick={() => navigate(`/bookings/${bookingId}`)}
-            >
-              See Details
-            </Menus.Button>
-            {status === "unconfirmed" && (
-              <Menus.Button
-                icon={<HiArrowDownOnSquare />}
-                onClick={() => navigate(`/checkin/${bookingId}`)}
-              >
-                Check In
-              </Menus.Button>
-            )}
-            {status === "checked-in" && (
-              <Menus.Button
-                icon={<HiArrowUpOnSquare />}
-                onClick={() => checkout(bookingId)}
-                disabled={isCheckingOut}
-              >
-                Check Out
-              </Menus.Button>
-            )}
-            <Modal.Open opens={"delete"}>
-              <Menus.Button icon={<HiTrash />}>Delete Booking</Menus.Button>
-            </Modal.Open>
-          </Menus.List>
-        </Menus.Menu>
-        <Modal.Window name={"delete"}>
-          <ConfirmDelete
-            resourceName={"booking"}
-            onConfirm={() => deleteBooking(bookingId)}
-            disabled={isDeletingBooking}
-          />
-        </Modal.Window> */}
+        <Menus.Toggle id={bikeId} />
+        <Menus.List id={bikeId}>
+        <Menus.Button
+        icon={<HiEye />}
+        onClick={() => navigate(`/homePage/${bikeId}`)}
+        >
+        See Details
+        </Menus.Button>
+        </Menus.List>
+      </Menus.Menu>
       </Modal>
     </Table.Row>
   );

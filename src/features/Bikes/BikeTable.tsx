@@ -5,7 +5,7 @@ import Empty from "../../UI/Empty";
 import Spinner from "../../UI/Spinner";
 import Pagination from "../../UI/Pagination";
 import BikeRow from "./BikeRow";
-import { useBikes } from "./useBookings";
+import { useBikes } from "./useBikes";
 
 function BikeTable() {
   const {  bikes, isLoading, count } = useBikes();

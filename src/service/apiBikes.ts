@@ -11,3 +11,10 @@ export async function getBikes({ filter, page }) {
   const data  = await res.json();
   return { data: data.bikes,count:data?.bikes?.length };
 }
+export async function getBike(bikeId) {
+  const res = await fetch(
+    `${API_URL}/bikes/${bikeId}` 
+  );
+  const data  = await res.json();
+  return { data: data.bike };
+}

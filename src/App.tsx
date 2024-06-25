@@ -4,6 +4,7 @@ import PageNotFound from "./pages/PageNotFound.tsx";
 import Applayout from "./UI/Applayout.tsx";
 import HomePage from "./pages/HomePage.tsx";
 import GlobalStyles from "./styles/GlobalStyles.ts";
+import ReportBikePage from "./pages/ReportBikePage.tsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Navigate replace to={"homePage"} /> },
       { path: "homePage", element: <HomePage /> },
+      { path: "homePage/:bikeId", element: <ReportBikePage /> },
     ],
   },
   {
