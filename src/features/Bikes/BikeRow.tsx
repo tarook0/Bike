@@ -101,10 +101,10 @@ function BikeRow({
 
 <Stacked>
 <span>
-  {format(new Date(date_stolen), "MMM dd yyyy")}
+  {format(new Date(date_stolen), "MMM/ dd/ yyyy")}
   </span>
   <span>
-  {format(new Date(date_stolen), " h aaa ")} 
+  {format(new Date(date_stolen), "  aaa hh:mm ")} 
   </span>
   </Stacked>
   {(serial==='Hidden'||serial==='Unknown')&&

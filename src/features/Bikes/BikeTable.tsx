@@ -6,10 +6,28 @@ import Spinner from "../../UI/Spinner";
 import Pagination from "../../UI/Pagination";
 import BikeRow from "./BikeRow";
 import { useBikes } from "./useBikes";
+import { useBikesCount } from "./useBikesCount";
+import { useSearchParams } from "react-router-dom";
 
 function BikeTable() {
-  const {  bikes, isLoading, count } = useBikes();
-  console.log(bikes);
+  const {  bikes, isLoading } = useBikes();
+  const [searchParams] = useSearchParams();
+  const {  non,stolen} = useBikesCount();
+  let count;
+  if(searchParams.get("status")==="all"){
+    count=Math.max( stolen,non);
+  }
+  else if(searchParams.get("status")==="non"){
+    count=non;
+  }
+  else if(searchParams.get("status")==="stolen"){
+    count=stolen;
+  }
+  else {
+    count=stolen;
+  }
+  
+
   if (isLoading) return <Spinner />;
   if (!bikes.length) {
     return <Empty resource={"Bikes "} />;

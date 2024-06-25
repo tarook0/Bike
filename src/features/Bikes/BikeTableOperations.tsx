@@ -1,9 +1,13 @@
 import Filter from "../../UI/Filter";
+import FormRow from "../../UI/FormRow";
+import Input from "../../UI/Input";
+import Search from "../../UI/Search";
 import TableOperations from "../../UI/TableOperations";
 
 function BikeTableOperations() {
   return (
     <TableOperations>
+      <Search/>
       <Filter
         filterField={"status"}
         options={[
@@ -13,6 +17,8 @@ function BikeTableOperations() {
           { value: "non", label: "Non" },
         ]}
       />
+       
+      
     </TableOperations>
   );
 }
