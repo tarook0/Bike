@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { differenceInDays, formatDistance, parseISO } from 'date-fns';
 
 
 
-export const subtractDates = (dateStr1, dateStr2) =>
+export const subtractDates = (dateStr1: any, dateStr2: any) =>
   differenceInDays(parseISO(String(dateStr1)), parseISO(String(dateStr2)));
 
-export const formatDistanceFromNow = (dateStr) =>
+export const formatDistanceFromNow = (dateStr: string) =>
   formatDistance(parseISO(dateStr), new Date(), {
     addSuffix: true,
   })
@@ -13,7 +14,7 @@ export const formatDistanceFromNow = (dateStr) =>
     .replace('in', 'In');
 
 
-export const getToday = function (options = {}) {
+export const getToday = function (options:any = {}) {
   const today = new Date();
 
 
@@ -23,11 +24,11 @@ export const getToday = function (options = {}) {
   return today.toISOString();
 };
 
-export const formatCurrency = (value) =>
+export const formatCurrency = (value: number | bigint) =>
   new Intl.NumberFormat('en', { style: 'currency', currency: 'USD' }).format(
     value
   );
-  export function formatSerialNumber(serialNumber) {
+  export function formatSerialNumber(serialNumber: string) {
     const formattedSerialNumber = serialNumber.padStart( serialNumber.length+1,'#');
   
     return formattedSerialNumber;

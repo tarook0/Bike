@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   cloneElement,
   createContext,
@@ -57,42 +58,43 @@ const Button = styled.button`
     color: var(--color-grey-500);
   }
 `;
-const ModalContext = createContext();
+const ModalContext = createContext<{
+  openName: string;
+  close: () => void;
+  open: (name: string) => void;
+}>({
+  openName: "",
+  close: () => {},
+  open: () => {},
+});
 
-function Modal({ children }) {
+function Modal({ children }: any) {
   const [openName, setOpenName] = useState("");
   const close = () => setOpenName("");
-  const open = setOpenName;
+  const open = (name: string) => setOpenName(name); // Fix: Provide a type annotation
+
   return (
     <ModalContext.Provider value={{ openName, close, open }}>
       {children}
     </ModalContext.Provider>
   );
 }
-function Open({ children, opens: opensWindowName }) {
+
+function Open({ children, opens: opensWindowName }: any) {
   const { open } = useContext(ModalContext);
   return cloneElement(children, { onClick: () => open(opensWindowName) });
 }
 
-function Window({ children, name }) {
+function Window({ children, name }: any) {
   const { openName, close } = useContext(ModalContext);
-   const ref=UseOutSideClick(close)
-  // useEffect(() => {
-  //   function handelClick(e) {
-  //     if (ref.current && !ref.current.contains(e.target)) {
-  //       console.log("Click out side ");
-  //       close();
-  //     }
-  //   }
-  //   document.addEventListener("click", handelClick, true);
-  //   return () => document.removeEventListener("click", handelClick, true);
-  // }, [close]);
+  const ref = UseOutSideClick(close);
+
   if (name !== openName) return null;
+
   return createPortal(
     <Overlay>
       <StyledModal ref={ref}>
         <Button onClick={close}>
-          {" "}
           <HiXMark />
         </Button>
         <div>{cloneElement(children, { onClosedModal: close })}</div>
@@ -101,6 +103,7 @@ function Window({ children, name }) {
     document.body
   );
 }
+
 Modal.Open = Open;
 Modal.Window = Window;
 
