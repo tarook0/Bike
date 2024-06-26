@@ -70,23 +70,30 @@ const StyledButton = styled.button`
     transition: all 0.3s;
   }
 `;
-const MenusContext = createContext();
+interface MenusContextType {
+  openId: string;
+  close: () => void;
+  open: (id: string) => void;
+  positions: { x: number; y: number } | null;
+  setPositions: React.Dispatch<React.SetStateAction<{ x: number; y: number } | null>>;
+}
+const MenusContext = createContext<MenusContextType | undefined>(undefined);
 function Menus({ children }:any) {
-  const [positions, setPositions] = useState(null);
-  const [openId, setOpenId] = useState();
+  const [positions, setPositions] = useState<{ x: number; y: number } | null>(null);
+  const [openId, setOpenId] = useState<string | any>(undefined);
+
   const close = () => setOpenId("");
-  const open = setOpenId;
+  const open = (id: string | undefined) => setOpenId(id || "");
+
   return (
-    <MenusContext.Provider
-      value={{ openId, close, open, positions, setPositions }}
-    >
+    <MenusContext.Provider value={{ openId, close, open, positions, setPositions }}>
       {children}
     </MenusContext.Provider>
   );
 }
 function Toggle({ id }:any) {
   const { open, close, openId, setPositions }:any = useContext(MenusContext);
-  function handelClick(e: { target: { closest: (arg0: string) => { (): any; new(): any; getBoundingClientRect: { (): any; new(): any; }; }; }; }) {
+  function handelClick(e:any) {
     const rect = e.target.closest("button").getBoundingClientRect();
     setPositions({
       x: window.innerWidth - rect.width - rect.x,
@@ -102,7 +109,7 @@ function Toggle({ id }:any) {
 }
 function List({ id, children }:any) {
   const { openId, positions, close }:any = useContext(MenusContext);
-  const ref = UseOutSideClick(close);
+  const ref = UseOutSideClick(close) as React.RefObject<HTMLUListElement>;
   if (openId !== id) return null;
   return createPortal(
     <StyledList $position={positions} ref={ref}>

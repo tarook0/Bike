@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import styled, { css } from "styled-components";
 import { format } from "date-fns";
@@ -57,30 +58,15 @@ const Img = styled.img`
 function BikeRow({
   bike: {
     date_stolen,
-    description,
-    frame_colors,
-    frame_model,
     id: bikeId,
-    is_stock_img,
     large_img,
     location_found,
-    manufacturer_name,
-    external_id,
-    registry_name,
-    registry_url,
     serial,
     status,
-    stolen,
-    stolen_coordinates,
     stolen_location,
-    thumb,
     title,
-    url,
-    year,
-    propulsion_type_slug,
-    cycle_type_slug,
   },
-}) {
+}:any) {
   const statusToTagName: Record<string, string>  = {
     found: "green",
     stolen: "red",

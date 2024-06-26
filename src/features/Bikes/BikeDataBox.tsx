@@ -1,11 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import styled from "styled-components";
 import { format} from "date-fns";
-// import { Flag } from "../../UI/Flag";
-
-import { Bike } from "./Bike";
 import Heading from "../../UI/Heading";
 import { HiOutlineHomeModern } from "react-icons/hi2";
 
@@ -95,7 +93,7 @@ const Stacked = styled.div`
 // `;
 
 // A purely presentational component
-function BikeDataBox({ bike: bike }: Bike) {
+function BikeDataBox({ bike: bike }: any) {
   console.log(bike);
   return (
     <StyledBikeDataBox>

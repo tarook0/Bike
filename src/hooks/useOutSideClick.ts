@@ -1,18 +1,22 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef } from "react";
 
-export function UseOutSideClick(handler: unknown, listenCapturing = true ) {
-  const ref = useRef();
+export function UseOutSideClick(handler: () => void, listenCapturing = true) {
+  const ref = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
-    function handelClick(e: any) {
-      if (ref.current && !ref.current.contains(e.target)) {
-        console.log("Click out side ");
+    function handleClickOutside(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        console.log("Clicked outside");
         handler();
       }
     }
-    document.addEventListener("click", handelClick, listenCapturing);
-    return () =>
-      document.removeEventListener("click", handelClick, listenCapturing);
+
+    document.addEventListener("click", handleClickOutside, listenCapturing);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside, listenCapturing);
+    };
   }, [handler, listenCapturing]);
+
   return ref;
 }
