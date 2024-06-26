@@ -12,8 +12,8 @@ This is a web application that allows police  users to explore and  bicycles. Th
 ## Technologies Used
 
 - **Frontend**: React.js, TypeScript, Vite,StyledComponents
-- **Backend**: " [bikeindex](https://bikeindex.org/documentation/api_v3)"
-- **Deployment**: Vercel [Bike](http://bike-gold.vercel.app/)"
+- **Backend**:  [bikeindex](https://bikeindex.org/documentation/api_v3)
+- **Deployment**: Vercel [Bike](http://bike-gold.vercel.app/)
 
 ## Getting Started
 
