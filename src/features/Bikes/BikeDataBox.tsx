@@ -110,7 +110,7 @@ function BikeDataBox({ bike: bike }: any) {
             {format(new Date(bike.date_stolen), "MMM/ dd/ yyyy")}
           </span>
           <span>
-            {format(new Date(bike.registration_created_at), "aa  hh: mm")}
+            {format(new Date(bike.date_stolen), "aa  hh: mm")}
           </span>
         </Stacked>
         <Stacked >
