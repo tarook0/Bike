@@ -16,7 +16,7 @@ const BikeTitle = styled.div`
   font-family: "Sono";
 `;
 
-const Stacked = styled.div`
+const Stacked = styled.div<{$type?:string}>`
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
@@ -24,12 +24,12 @@ const Stacked = styled.div`
   & span:first-child {
     font-weight: 500;
     ${(props) =>
-      props.type === "stolen" &&
+      props.$type === "stolen" &&
       css`
         color: var(--color-red-700);
       `}
     ${(props) =>
-      props.type === "found" &&
+      props.$type === "found" &&
       css`
         color: var(--color-green-700);
       `}
@@ -81,7 +81,7 @@ function BikeRow({
     cycle_type_slug,
   },
 }) {
-  const statusToTagName = {
+  const statusToTagName: Record<string, string>  = {
     found: "green",
     stolen: "red",
     "with owner": "blue",
@@ -99,7 +99,7 @@ function BikeRow({
           }
         ></Img>
         <BikeTitle>{title}</BikeTitle>
-        <Stacked type={stolen_location ? "stolen" : "found"}>
+        <Stacked $type={stolen_location ? "stolen" : "found"}>
           {stolen_location ? <span> STOLEN IN </span> : <span> FOUND IN</span>}
           {stolen_location ? (
             <span> {stolen_location}</span>
@@ -113,15 +113,15 @@ function BikeRow({
           <span>{format(new Date(date_stolen), "  aaa hh:mm ")}</span>
         </Stacked>
         {(serial === "Hidden" || serial === "Unknown") && (
-          <Tag type={"grey"}>{serial}</Tag>
+          <Tag $type={"grey"}>{serial}</Tag>
         )}
         {serial !== "Hidden" && serial !== "Unknown" && (
-          <Tag type={"indigo"}>
+          <Tag $type={"indigo"}>
             <Amount>{formatSerialNumber(serial)}</Amount>
           </Tag>
         )}
 
-        <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
+        <Tag $type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
 
         <Menus.Menu>
           <Menus.Toggle id={bikeId} />

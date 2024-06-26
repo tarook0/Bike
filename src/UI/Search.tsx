@@ -14,7 +14,7 @@ export default function Search() {
   }, [searchQuery, searchParams, setSearchParams]);
 
   return (
-    <Row type={"horizental"}>
+    <Row $type={"horizental"}>
       <Input
         type="text"
         placeholder="Search for a Bike "

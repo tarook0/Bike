@@ -1,4 +1,5 @@
-function Empty({ resource }) {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+function Empty({ resource }:any) {
   return <p>No {resource} could be found.</p>;
 }
 

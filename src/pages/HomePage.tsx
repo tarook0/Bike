@@ -5,7 +5,7 @@ import Row from "../UI/Row";
 function HomePage() {
   return (
     <>
-      <Row type="horizontal">
+      <Row $type="horizontal">
         <Heading as="h1">All Bikes</Heading>
         <BikeTableOperations/>
       </Row>

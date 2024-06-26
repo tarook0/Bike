@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styled, { css } from "styled-components";
-
-const sizes = {
+const sizes: Record<string, any> = {
   small: css`
     font-size: 1.2rem;
     padding: 0.4rem 0.8rem;
@@ -19,8 +19,7 @@ const sizes = {
     font-weight: 500;
   `,
 };
-
-const variations = {
+const variations: Record<string, any> = {
   primary: css`
     color: var(--color-brand-50);
     background-color: var(--color-brand-600);
@@ -47,15 +46,15 @@ const variations = {
     }
   `,
 };
-const Button = styled.button`
+const Button = styled.button<{$size?:any;$variation?:any}>`
   border: none;
   border-radius: var(--border-redius-sm);
   box-shadow: var(--shadow-sm);
-  ${(props) => sizes[props.size]};
-  ${(props) => variations[props.variation]};
+  ${(props) => sizes[props.$size ]};
+  ${(props) => variations[props.$variation]};
 `;
 Button.defaultProps = {
-  size: "medium",
-  variation: "primary",
+  $size: "medium",
+  $variation: "primary",
 };
 export default Button;

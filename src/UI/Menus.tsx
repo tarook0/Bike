@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { HiEllipsisVertical } from "react-icons/hi2";
@@ -29,15 +30,20 @@ const StyledToggle = styled.button`
   }
 `;
 
-const StyledList = styled.ul`
-  position: fixed;
+interface StyledListProps {
+  $position?: {
+    x: any;
+    y: any;
+  };
+}
 
+const StyledList = styled.ul<StyledListProps>`
+  position: fixed;
   background-color: var(--color-grey-0);
   box-shadow: var(--shadow-md);
   border-radius: var(--border-radius-md);
-
-  right: ${(props) => props.position.x}px;
-  top: ${(props) => props.position.y}px;
+  right: ${(props) => props.$position?.x}px;
+  top: ${(props) => props.$position?.y}px;
 `;
 
 const StyledButton = styled.button`
@@ -65,7 +71,7 @@ const StyledButton = styled.button`
   }
 `;
 const MenusContext = createContext();
-function Menus({ children }) {
+function Menus({ children }:any) {
   const [positions, setPositions] = useState(null);
   const [openId, setOpenId] = useState();
   const close = () => setOpenId("");
@@ -78,8 +84,8 @@ function Menus({ children }) {
     </MenusContext.Provider>
   );
 }
-function Toggle({ id }) {
-  const { open, close, openId, setPositions } = useContext(MenusContext);
+function Toggle({ id }:any) {
+  const { open, close, openId, setPositions }:any = useContext(MenusContext);
   function handelClick(e: { target: { closest: (arg0: string) => { (): any; new(): any; getBoundingClientRect: { (): any; new(): any; }; }; }; }) {
     const rect = e.target.closest("button").getBoundingClientRect();
     setPositions({
@@ -94,19 +100,19 @@ function Toggle({ id }) {
     </StyledToggle>
   );
 }
-function List({ id, children }) {
-  const { openId, positions, close } = useContext(MenusContext);
+function List({ id, children }:any) {
+  const { openId, positions, close }:any = useContext(MenusContext);
   const ref = UseOutSideClick(close);
   if (openId !== id) return null;
   return createPortal(
-    <StyledList position={positions} ref={ref}>
+    <StyledList $position={positions} ref={ref}>
       {children}
     </StyledList>,
     document.body
   );
 }
-function Button({ children, icon, onClick }) {
-  const { close } = useContext(MenusContext);
+function Button({ children, icon, onClick }:any) {
+  const { close }:any = useContext(MenusContext);
   function handelClick() {
     onClick?.();
     close();

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import { useSearchParams } from "react-router-dom";
@@ -24,10 +25,10 @@ const Buttons = styled.div`
   gap: 0.6rem;
 `;
 
-const PaginationButton = styled.button`
+const PaginationButton = styled.button<{$active?:any}>`
   background-color: ${(props) =>
-    props.active ? " var(--color-brand-600)" : "var(--color-grey-50)"};
-  color: ${(props) => (props.active ? " var(--color-brand-50)" : "inherit")};
+    props.$active ? " var(--color-brand-600)" : "var(--color-grey-50)"};
+  color: ${(props) => (props.$active ? " var(--color-brand-50)" : "inherit")};
   border: none;
   border-radius: var(--border-radius-sm);
   font-weight: 500;
@@ -58,7 +59,7 @@ const PaginationButton = styled.button`
     color: var(--color-brand-50);
   }
 `;
-function Pagination({count}) {
+function Pagination({count}:any) {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = !searchParams.get("page")
     ? 1
@@ -66,12 +67,12 @@ function Pagination({count}) {
   const pageCount = Math.ceil(count / PAGE_SIZE);
   function nextPage() {
     const next = currentPage === pageCount ? currentPage : currentPage + 1;
-    searchParams.set("page", next);
+    searchParams.set("page", `${next}`);
     setSearchParams(searchParams);
   }
   function prevPage() {
     const prev = currentPage === 1 ? currentPage : currentPage - 1;
-    searchParams.set("page", prev);
+    searchParams.set("page", `${prev}`);
     setSearchParams(searchParams);
   }
   if (pageCount <= 1) return null;

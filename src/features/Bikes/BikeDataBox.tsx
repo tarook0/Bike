@@ -74,25 +74,25 @@ const Stacked = styled.div`
   }
 `;
 
-const Theft = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  margin-bottom: 1.6rem;
-  color: var(--color-grey-500);
+// const Theft = styled.div`
+//   display: flex;
+//   align-items: center;
+//   gap: 1.2rem;
+//   margin-bottom: 1.6rem;
+//   color: var(--color-grey-500);
 
-  & p:first-of-type {
-    font-weight: 500;
-    color: var(--color-grey-700);
-  }
-`;
+//   & p:first-of-type {
+//     font-weight: 500;
+//     color: var(--color-grey-700);
+//   }
+// `;
 
-const Footer = styled.footer`
-  padding: 1.6rem 4rem;
-  font-size: 1.2rem;
-  color: var(--color-grey-500);
-  text-align: right;
-`;
+// const Footer = styled.footer`
+//   padding: 1.6rem 4rem;
+//   font-size: 1.2rem;
+//   color: var(--color-grey-500);
+//   text-align: right;
+// `;
 
 // A purely presentational component
 function BikeDataBox({ bike: bike }: Bike) {
@@ -106,7 +106,7 @@ function BikeDataBox({ bike: bike }: Bike) {
             {"Bike Name  -->"} <span>{bike.title}</span>
           </p>
         </div>
-        <Stacked type={"theft"}>
+        <Stacked >
           <span> Date of the theft </span>
           <span>
             {format(new Date(bike.date_stolen), "MMM/ dd/ yyyy")}
@@ -115,7 +115,7 @@ function BikeDataBox({ bike: bike }: Bike) {
             {format(new Date(bike.registration_created_at), "aa  hh: mm")}
           </span>
         </Stacked>
-        <Stacked type={"reported"}>
+        <Stacked >
           <span> Date of reported </span>
           <span>
             {format(new Date(bike.registration_created_at), "MMM/ dd/ yyyy")}

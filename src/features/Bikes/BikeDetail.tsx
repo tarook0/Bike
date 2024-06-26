@@ -24,18 +24,18 @@ function BikeDetail() {
   if (isLoading) return <Spinner />;
   const { status, id: bikeId } = bike;
   console.log(bike);
-  const statusToTagName = {
+  const statusToTagName : Record<string, string> = {
     "found": "green",
     "stolen": "red",
-    "with owner":'blue',
+    "with owner":"blue",
   };
 
   return (
     <>
-      <Row type="horizontal">
+      <Row $type="horizontal">
         <HeadingGroup>
-          <Heading as="h1">Bike ID  <Tag type={'silver'}>#{bikeId}</Tag>
-          <Tag type={statusToTagName[status]}>{status?.replace("-", " ")}</Tag>
+          <Heading as="h1">Bike ID  <Tag $type={'silver'}>#{bikeId}</Tag>
+          <Tag $type={statusToTagName[status]}>{status?.replace("-", " ")}</Tag>
           </Heading>
         </HeadingGroup>
         <ButtonText onClick={moveBack}>&larr; Back</ButtonText>
@@ -46,7 +46,7 @@ function BikeDetail() {
       <ButtonGroup>
       
 
-        <Button variation="secondary" onClick={moveBack}>
+        <Button $variation="secondary" onClick={moveBack}>
           Back
         </Button>
       </ButtonGroup>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from "styled-components";
 
 const StyledDataItem = styled.div`
@@ -20,7 +21,7 @@ const Label = styled.span`
   }
 `;
 
-function DataItem({ icon, label, children }) {
+function DataItem({ icon, label, children }:any) {
   return (
     <StyledDataItem>
       <Label>
